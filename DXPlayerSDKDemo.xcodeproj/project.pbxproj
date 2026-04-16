@@ -1,0 +1,808 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0B02E05E420E7B3473C69648 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2B4C109E37F9C1B7EBB4F0B /* UIKit.framework */; };
+		0C926FA6B37228A0C8E4013A /* APIDanmakuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23123CF28B99173F67136CE /* APIDanmakuDataSource.swift */; };
+		11A8DA9E53ECB80BBB9D8D0D /* DXPlayerSDKVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57C37241C71F97CD3D44E3 /* DXPlayerSDKVersion.swift */; };
+		14FA2D0EDD71BF3022121CAC /* FSPlayer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A00A6AFD6D9D36D9C797EBC8 /* FSPlayer.xcframework */; };
+		1684B0A85617CDBAF1E908D7 /* DXPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72A5C8189B2376F8D2C1C575 /* DXPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1A966F7177EB9A3B02890974 /* SplitTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C573485178C8499E0764DDC /* SplitTrackTests.swift */; };
+		1ABAB15FF4F94D6CFB7AE30C /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4949C4FA5A15E80C2F764A31 /* CoreMedia.framework */; };
+		1B32ED65276770AE4995AD63 /* PlaybackSpeedManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DBA589582B2E95DC12C332 /* PlaybackSpeedManager.swift */; };
+		206CA390BF82C41C33ADBA87 /* FSPlayer.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A00A6AFD6D9D36D9C797EBC8 /* FSPlayer.xcframework */; };
+		21F7EC63A6A21E20D39457CA /* VideoAdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F6A57B92DF3D1D5AF841E6 /* VideoAdResponse.swift */; };
+		25C746F7654C1DDD97CA6B44 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DA695CAD8C44A0D62861E02 /* LaunchScreen.storyboard */; };
+		2D9B1F2F0680787FAC2973BC /* PlayerSettingsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4C56855122966BB30DF8DC /* PlayerSettingsMenuView.swift */; };
+		343C81D445313052D567AC76 /* DanmakuOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF907FF259398A2489A6D5C5 /* DanmakuOverlay.swift */; };
+		37A8B7885161528227DCCB0E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC421F1F8A495E5BA3E2CEB5 /* MediaPlayer.framework */; };
+		3870D027F1BC70FE5110BFDF /* DanmakuModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A6B6169258C7BAB3E979D0 /* DanmakuModels.swift */; };
+		476850933A8413C59491622E /* DanmakuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90456953846DB625282AEE9A /* DanmakuManager.swift */; };
+		47AB9AE7D7F00C30A10453BB /* PrerollAdOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3583545D4B3A9420CC7797 /* PrerollAdOverlay.swift */; };
+		49FBBFFD36926E0198CBE564 /* Decryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA8BFF8659BC43ABD340B56 /* Decryptor.swift */; };
+		539DF56AA4C93139311A2E3B /* M4SubtitleDanmakuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C6853D08B8592F0EA4F4C7 /* M4SubtitleDanmakuTests.swift */; };
+		557BEF16D24D7A0FC9BA2700 /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286B06E7A696B17CAE5B3167 /* AdManager.swift */; };
+		6E03374FE5C06CA2BEBE81A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 871B5ED689C4C0AA1AD2547A /* Assets.xcassets */; };
+		714E846E4B956E4C966C4F76 /* ThumbnailPreviewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12127C4305875699D6C1112 /* ThumbnailPreviewManager.swift */; };
+		73EDA5963C665CF7FD800B69 /* FSPlayer.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A00A6AFD6D9D36D9C797EBC8 /* FSPlayer.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		73FDB6EA64D1A250AFEF61B9 /* LocalDanmakuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DFC96E3C7EAC28A74980F9 /* LocalDanmakuDataSource.swift */; };
+		79A1DEE67005D068E949C949 /* DanmakuLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5A0EFFA1DF1A95B5E4F0D /* DanmakuLabel.swift */; };
+		7CB1CEF437F9F34AE32611DE /* DanmakuSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D69316A6236D323585BA0F7 /* DanmakuSettingsView.swift */; };
+		80ADCC36B867EEE269A243F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC7B311B6A72CEF4FBAE444 /* AppDelegate.swift */; };
+		81EC90340388D9957EC556F4 /* DanmakuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C43BD43093C97B3804666BC /* DanmakuDataSource.swift */; };
+		8B23871E4F64B1BA4308D94F /* UIImage+DXPlayerSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246595CFDBF93034D155B421 /* UIImage+DXPlayerSDK.swift */; };
+		9277DFB4B4AF1867E9C59EC6 /* TestResources in Resources */ = {isa = PBXBuildFile; fileRef = 55666BE5A8816B24989EF3BE /* TestResources */; };
+		94EAE62ED490A2DC41C41896 /* PauseAdOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3266D5E520400E5CF3A5F6E9 /* PauseAdOverlay.swift */; };
+		9751053382C0AD7A7738ED08 /* SubtitleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB14EA0AE42002A1BAA7A581 /* SubtitleManager.swift */; };
+		9E7DD3E93B7B653CE01E7A08 /* DanmakuControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4018564EE150542B8A4163B1 /* DanmakuControlView.swift */; };
+		A2FE8E2620151BABEA0E44C6 /* PlaybackSpeedSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034695E2F02484B31579A154 /* PlaybackSpeedSettingsView.swift */; };
+		A880EF11A36A599DDF815F2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A502B876320DF6310AA4592 /* CoreGraphics.framework */; };
+		AC9FA7A44A474AD997AC5D4B /* DXPlayerLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7745867B637C5A4969958BCF /* DXPlayerLogger.swift */; };
+		ACA29763A4763909BE991E3F /* DXPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A5C8189B2376F8D2C1C575 /* DXPlayerSDK.framework */; };
+		B4CBC803471FD56F7B944206 /* PlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9600854747A6D060CAB3D46 /* PlayerControlView.swift */; };
+		BC837E70C092C8AB4FC13E4C /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7486D66859C1A2C127D69538 /* IntegrationTests.swift */; };
+		BF7601BD16B2A467A9D10A55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EF483CF586A14F6DB5D05D6 /* Assets.xcassets */; };
+		D591CBF769CF678587AD277A /* PlayerProgressSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF7EAA99BA63A71B5FE45AE /* PlayerProgressSlider.swift */; };
+		D77FE5CB15BF5FB191DCB18F /* AspectRatioSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95A0063A7A45642D405D58E /* AspectRatioSettingsView.swift */; };
+		D7A92EEF4C28B3DDC783FF28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B2CC4C952E870A11874691 /* ViewController.swift */; };
+		D91DB90DDDAC3E95F1D725BF /* ProxyServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABACAF24FAE7E356FDCE8E0 /* ProxyServer.swift */; };
+		DCCCD1C662A5586F61D54847 /* AspectRatioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A531C3DAC836D72C982776 /* AspectRatioManager.swift */; };
+		E4EBA1DE365A16E55ED3158D /* PlayerControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08747793FD8D3F2E2A664ACD /* PlayerControlViewModel.swift */; };
+		EC9A54A496D8BA54286676D9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4E58ADF072DC9E277AA704D /* AVFoundation.framework */; };
+		EE5AF35794C71140E79E4657 /* ThumbnailPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B8367E474F3C2A09C0E5A5B /* ThumbnailPreviewView.swift */; };
+		FAEB23791846AE3558E6809A /* ThumbnailCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DC93AE5B2F6F4EC318E35F /* ThumbnailCache.swift */; };
+		FBF92811841C5A10B53BB848 /* ThumbnailSpriteParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817C4F062145A00A914513B1 /* ThumbnailSpriteParser.swift */; };
+		FD5EC512DDE01A5EAF782841 /* IJKPlayerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D900755CB684E0D70421A94B /* IJKPlayerContainerView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0227E6B27E3E774F22E592A5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7DE6FD7BF332BB223CACF829 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D34754D461BB4741FE360E68;
+			remoteInfo = DXPlayerSDKDemoApp;
+		};
+		29CB06316C087E4412B6F7AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7DE6FD7BF332BB223CACF829 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3D265600366082ECA15D529;
+			remoteInfo = DXPlayerSDK;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		410AB27BD57B945CE9ED849A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1684B0A85617CDBAF1E908D7 /* DXPlayerSDK.framework in Embed Frameworks */,
+				73EDA5963C665CF7FD800B69 /* FSPlayer.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		034695E2F02484B31579A154 /* PlaybackSpeedSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackSpeedSettingsView.swift; sourceTree = "<group>"; };
+		08747793FD8D3F2E2A664ACD /* PlayerControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlViewModel.swift; sourceTree = "<group>"; };
+		0D69316A6236D323585BA0F7 /* DanmakuSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmakuSettingsView.swift; sourceTree = "<group>"; };
+		1A502B876320DF6310AA4592 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1C573485178C8499E0764DDC /* SplitTrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitTrackTests.swift; sourceTree = "<group>"; };
+		246595CFDBF93034D155B421 /* UIImage+DXPlayerSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+DXPlayerSDK.swift"; sourceTree = "<group>"; };
+		286B06E7A696B17CAE5B3167 /* AdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
+		3266D5E520400E5CF3A5F6E9 /* PauseAdOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseAdOverlay.swift; sourceTree = "<group>"; };
+		3B8367E474F3C2A09C0E5A5B /* ThumbnailPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailPreviewView.swift; sourceTree = "<group>"; };
+		3D3583545D4B3A9420CC7797 /* PrerollAdOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrerollAdOverlay.swift; sourceTree = "<group>"; };
+		3DA8BFF8659BC43ABD340B56 /* Decryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decryptor.swift; sourceTree = "<group>"; };
+		4018564EE150542B8A4163B1 /* DanmakuControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmakuControlView.swift; sourceTree = "<group>"; };
+		41B1901D598E1E22BDB570B6 /* DXPlayerSDKDemoApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DXPlayerSDKDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4949C4FA5A15E80C2F764A31 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		55666BE5A8816B24989EF3BE /* TestResources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TestResources; path = DemoApp/TestResources; sourceTree = SOURCE_ROOT; };
+		57C6853D08B8592F0EA4F4C7 /* M4SubtitleDanmakuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M4SubtitleDanmakuTests.swift; sourceTree = "<group>"; };
+		5AC7B311B6A72CEF4FBAE444 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5C43BD43093C97B3804666BC /* DanmakuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmakuDataSource.swift; sourceTree = "<group>"; };
+		6EF483CF586A14F6DB5D05D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Assets.xcassets; path = DXPlayerSDK/Resources/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		70DC93AE5B2F6F4EC318E35F /* ThumbnailCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailCache.swift; sourceTree = "<group>"; };
+		72A5C8189B2376F8D2C1C575 /* DXPlayerSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DXPlayerSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		742DD909A8311930D0E807ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7486D66859C1A2C127D69538 /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		7745867B637C5A4969958BCF /* DXPlayerLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXPlayerLogger.swift; sourceTree = "<group>"; };
+		79DFC96E3C7EAC28A74980F9 /* LocalDanmakuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDanmakuDataSource.swift; sourceTree = "<group>"; };
+		7AF7EAA99BA63A71B5FE45AE /* PlayerProgressSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProgressSlider.swift; sourceTree = "<group>"; };
+		817C4F062145A00A914513B1 /* ThumbnailSpriteParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailSpriteParser.swift; sourceTree = "<group>"; };
+		86A6B6169258C7BAB3E979D0 /* DanmakuModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmakuModels.swift; sourceTree = "<group>"; };
+		871B5ED689C4C0AA1AD2547A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8C00C1D036579916891CEF3A /* DXPlayerSDKTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DXPlayerSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90456953846DB625282AEE9A /* DanmakuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmakuManager.swift; sourceTree = "<group>"; };
+		99A531C3DAC836D72C982776 /* AspectRatioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioManager.swift; sourceTree = "<group>"; };
+		A00A6AFD6D9D36D9C797EBC8 /* FSPlayer.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FSPlayer.xcframework; path = Frameworks/FSPlayer.xcframework; sourceTree = "<group>"; };
+		B12127C4305875699D6C1112 /* ThumbnailPreviewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailPreviewManager.swift; sourceTree = "<group>"; };
+		B6F6A57B92DF3D1D5AF841E6 /* VideoAdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAdResponse.swift; sourceTree = "<group>"; };
+		BABACAF24FAE7E356FDCE8E0 /* ProxyServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyServer.swift; sourceTree = "<group>"; };
+		C2B4C109E37F9C1B7EBB4F0B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C5B5A0EFFA1DF1A95B5E4F0D /* DanmakuLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmakuLabel.swift; sourceTree = "<group>"; };
+		D1DBA589582B2E95DC12C332 /* PlaybackSpeedManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackSpeedManager.swift; sourceTree = "<group>"; };
+		D900755CB684E0D70421A94B /* IJKPlayerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IJKPlayerContainerView.swift; sourceTree = "<group>"; };
+		E23123CF28B99173F67136CE /* APIDanmakuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIDanmakuDataSource.swift; sourceTree = "<group>"; };
+		E5B2CC4C952E870A11874691 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E9600854747A6D060CAB3D46 /* PlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlView.swift; sourceTree = "<group>"; };
+		EB14EA0AE42002A1BAA7A581 /* SubtitleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubtitleManager.swift; sourceTree = "<group>"; };
+		EC421F1F8A495E5BA3E2CEB5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		EFC4207326C6E45CD0B19524 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F4E58ADF072DC9E277AA704D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F95A0063A7A45642D405D58E /* AspectRatioSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioSettingsView.swift; sourceTree = "<group>"; };
+		FA57C37241C71F97CD3D44E3 /* DXPlayerSDKVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DXPlayerSDKVersion.swift; sourceTree = "<group>"; };
+		FB4C56855122966BB30DF8DC /* PlayerSettingsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSettingsMenuView.swift; sourceTree = "<group>"; };
+		FF907FF259398A2489A6D5C5 /* DanmakuOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanmakuOverlay.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6947E48D31056D25F5ACBD45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACA29763A4763909BE991E3F /* DXPlayerSDK.framework in Frameworks */,
+				206CA390BF82C41C33ADBA87 /* FSPlayer.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE600285D611340114F88C58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14FA2D0EDD71BF3022121CAC /* FSPlayer.xcframework in Frameworks */,
+				0B02E05E420E7B3473C69648 /* UIKit.framework in Frameworks */,
+				EC9A54A496D8BA54286676D9 /* AVFoundation.framework in Frameworks */,
+				37A8B7885161528227DCCB0E /* MediaPlayer.framework in Frameworks */,
+				1ABAB15FF4F94D6CFB7AE30C /* CoreMedia.framework in Frameworks */,
+				A880EF11A36A599DDF815F2D /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04C1903088EBAB9BA2AD925E /* ThumbnailPreview */ = {
+			isa = PBXGroup;
+			children = (
+				70DC93AE5B2F6F4EC318E35F /* ThumbnailCache.swift */,
+				B12127C4305875699D6C1112 /* ThumbnailPreviewManager.swift */,
+				3B8367E474F3C2A09C0E5A5B /* ThumbnailPreviewView.swift */,
+				817C4F062145A00A914513B1 /* ThumbnailSpriteParser.swift */,
+			);
+			path = ThumbnailPreview;
+			sourceTree = "<group>";
+		};
+		1945D7E68FD8623B2F52D2C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4E58ADF072DC9E277AA704D /* AVFoundation.framework */,
+				1A502B876320DF6310AA4592 /* CoreGraphics.framework */,
+				4949C4FA5A15E80C2F764A31 /* CoreMedia.framework */,
+				A00A6AFD6D9D36D9C797EBC8 /* FSPlayer.xcframework */,
+				EC421F1F8A495E5BA3E2CEB5 /* MediaPlayer.framework */,
+				C2B4C109E37F9C1B7EBB4F0B /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		21736D469896221E90569345 /* DemoApp */ = {
+			isa = PBXGroup;
+			children = (
+				5AC7B311B6A72CEF4FBAE444 /* AppDelegate.swift */,
+				871B5ED689C4C0AA1AD2547A /* Assets.xcassets */,
+				EFC4207326C6E45CD0B19524 /* Info.plist */,
+				5DA695CAD8C44A0D62861E02 /* LaunchScreen.storyboard */,
+				B6F6A57B92DF3D1D5AF841E6 /* VideoAdResponse.swift */,
+				E5B2CC4C952E870A11874691 /* ViewController.swift */,
+			);
+			path = DemoApp;
+			sourceTree = "<group>";
+		};
+		2B0FA1990962A89D5A70FD34 /* DXPlayerSDKTests */ = {
+			isa = PBXGroup;
+			children = (
+				7486D66859C1A2C127D69538 /* IntegrationTests.swift */,
+				57C6853D08B8592F0EA4F4C7 /* M4SubtitleDanmakuTests.swift */,
+				1C573485178C8499E0764DDC /* SplitTrackTests.swift */,
+			);
+			path = DXPlayerSDKTests;
+			sourceTree = "<group>";
+		};
+		33DCD4F332F31800E254ED3C = {
+			isa = PBXGroup;
+			children = (
+				6EF483CF586A14F6DB5D05D6 /* Assets.xcassets */,
+				55666BE5A8816B24989EF3BE /* TestResources */,
+				21736D469896221E90569345 /* DemoApp */,
+				2B0FA1990962A89D5A70FD34 /* DXPlayerSDKTests */,
+				7E64AA1E985523548D14452C /* Sources */,
+				1945D7E68FD8623B2F52D2C7 /* Frameworks */,
+				4A1A21C789DC54BF5AE227A3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4A1A21C789DC54BF5AE227A3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				72A5C8189B2376F8D2C1C575 /* DXPlayerSDK.framework */,
+				41B1901D598E1E22BDB570B6 /* DXPlayerSDKDemoApp.app */,
+				8C00C1D036579916891CEF3A /* DXPlayerSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7E64AA1E985523548D14452C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				286B06E7A696B17CAE5B3167 /* AdManager.swift */,
+				99A531C3DAC836D72C982776 /* AspectRatioManager.swift */,
+				F95A0063A7A45642D405D58E /* AspectRatioSettingsView.swift */,
+				3DA8BFF8659BC43ABD340B56 /* Decryptor.swift */,
+				7745867B637C5A4969958BCF /* DXPlayerLogger.swift */,
+				FA57C37241C71F97CD3D44E3 /* DXPlayerSDKVersion.swift */,
+				D900755CB684E0D70421A94B /* IJKPlayerContainerView.swift */,
+				3266D5E520400E5CF3A5F6E9 /* PauseAdOverlay.swift */,
+				D1DBA589582B2E95DC12C332 /* PlaybackSpeedManager.swift */,
+				034695E2F02484B31579A154 /* PlaybackSpeedSettingsView.swift */,
+				E9600854747A6D060CAB3D46 /* PlayerControlView.swift */,
+				08747793FD8D3F2E2A664ACD /* PlayerControlViewModel.swift */,
+				7AF7EAA99BA63A71B5FE45AE /* PlayerProgressSlider.swift */,
+				FB4C56855122966BB30DF8DC /* PlayerSettingsMenuView.swift */,
+				3D3583545D4B3A9420CC7797 /* PrerollAdOverlay.swift */,
+				BABACAF24FAE7E356FDCE8E0 /* ProxyServer.swift */,
+				EB14EA0AE42002A1BAA7A581 /* SubtitleManager.swift */,
+				246595CFDBF93034D155B421 /* UIImage+DXPlayerSDK.swift */,
+				C4701EFC7D55C84F4771B7FE /* Danmaku */,
+				04C1903088EBAB9BA2AD925E /* ThumbnailPreview */,
+			);
+			name = Sources;
+			path = DXPlayerSDK/Sources;
+			sourceTree = "<group>";
+		};
+		C4701EFC7D55C84F4771B7FE /* Danmaku */ = {
+			isa = PBXGroup;
+			children = (
+				E23123CF28B99173F67136CE /* APIDanmakuDataSource.swift */,
+				4018564EE150542B8A4163B1 /* DanmakuControlView.swift */,
+				5C43BD43093C97B3804666BC /* DanmakuDataSource.swift */,
+				C5B5A0EFFA1DF1A95B5E4F0D /* DanmakuLabel.swift */,
+				90456953846DB625282AEE9A /* DanmakuManager.swift */,
+				86A6B6169258C7BAB3E979D0 /* DanmakuModels.swift */,
+				FF907FF259398A2489A6D5C5 /* DanmakuOverlay.swift */,
+				0D69316A6236D323585BA0F7 /* DanmakuSettingsView.swift */,
+				79DFC96E3C7EAC28A74980F9 /* LocalDanmakuDataSource.swift */,
+			);
+			path = Danmaku;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		231C5F4D8AF70A8509BD8348 /* DXPlayerSDKTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A57FCA507170BCA1CCCD1A05 /* Build configuration list for PBXNativeTarget "DXPlayerSDKTests" */;
+			buildPhases = (
+				AF674761C31E8767710D8671 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A6B48FAD4E51157C50EE06C3 /* PBXTargetDependency */,
+			);
+			name = DXPlayerSDKTests;
+			packageProductDependencies = (
+			);
+			productName = DXPlayerSDKTests;
+			productReference = 8C00C1D036579916891CEF3A /* DXPlayerSDKTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D34754D461BB4741FE360E68 /* DXPlayerSDKDemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5260B1BB6655CBB76CA81E2 /* Build configuration list for PBXNativeTarget "DXPlayerSDKDemoApp" */;
+			buildPhases = (
+				5D06E37BC4154426FAAD1FBE /* Sources */,
+				A7CB93C1B9C5CE84C1D4B361 /* Resources */,
+				6947E48D31056D25F5ACBD45 /* Frameworks */,
+				410AB27BD57B945CE9ED849A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8A0933DE707BB6B11763C126 /* PBXTargetDependency */,
+			);
+			name = DXPlayerSDKDemoApp;
+			packageProductDependencies = (
+			);
+			productName = DXPlayerSDKDemoApp;
+			productReference = 41B1901D598E1E22BDB570B6 /* DXPlayerSDKDemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D3D265600366082ECA15D529 /* DXPlayerSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14E83EC3CFB823D16DB6C2E9 /* Build configuration list for PBXNativeTarget "DXPlayerSDK" */;
+			buildPhases = (
+				18C5F1DF1F1F70BDDD9730C9 /* Sources */,
+				C2A34D896082D0E97EAB60DD /* Resources */,
+				AE600285D611340114F88C58 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DXPlayerSDK;
+			packageProductDependencies = (
+			);
+			productName = DXPlayerSDK;
+			productReference = 72A5C8189B2376F8D2C1C575 /* DXPlayerSDK.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7DE6FD7BF332BB223CACF829 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					D34754D461BB4741FE360E68 = {
+						DevelopmentTeam = BQ6A4VMVJF;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 243B7EB8DFD86A3FCC124FB9 /* Build configuration list for PBXProject "DXPlayerSDKDemo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 33DCD4F332F31800E254ED3C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3D265600366082ECA15D529 /* DXPlayerSDK */,
+				D34754D461BB4741FE360E68 /* DXPlayerSDKDemoApp */,
+				231C5F4D8AF70A8509BD8348 /* DXPlayerSDKTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A7CB93C1B9C5CE84C1D4B361 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E03374FE5C06CA2BEBE81A6 /* Assets.xcassets in Resources */,
+				25C746F7654C1DDD97CA6B44 /* LaunchScreen.storyboard in Resources */,
+				9277DFB4B4AF1867E9C59EC6 /* TestResources in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2A34D896082D0E97EAB60DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF7601BD16B2A467A9D10A55 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		18C5F1DF1F1F70BDDD9730C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C926FA6B37228A0C8E4013A /* APIDanmakuDataSource.swift in Sources */,
+				557BEF16D24D7A0FC9BA2700 /* AdManager.swift in Sources */,
+				DCCCD1C662A5586F61D54847 /* AspectRatioManager.swift in Sources */,
+				D77FE5CB15BF5FB191DCB18F /* AspectRatioSettingsView.swift in Sources */,
+				AC9FA7A44A474AD997AC5D4B /* DXPlayerLogger.swift in Sources */,
+				11A8DA9E53ECB80BBB9D8D0D /* DXPlayerSDKVersion.swift in Sources */,
+				9E7DD3E93B7B653CE01E7A08 /* DanmakuControlView.swift in Sources */,
+				81EC90340388D9957EC556F4 /* DanmakuDataSource.swift in Sources */,
+				79A1DEE67005D068E949C949 /* DanmakuLabel.swift in Sources */,
+				476850933A8413C59491622E /* DanmakuManager.swift in Sources */,
+				3870D027F1BC70FE5110BFDF /* DanmakuModels.swift in Sources */,
+				343C81D445313052D567AC76 /* DanmakuOverlay.swift in Sources */,
+				7CB1CEF437F9F34AE32611DE /* DanmakuSettingsView.swift in Sources */,
+				49FBBFFD36926E0198CBE564 /* Decryptor.swift in Sources */,
+				FD5EC512DDE01A5EAF782841 /* IJKPlayerContainerView.swift in Sources */,
+				73FDB6EA64D1A250AFEF61B9 /* LocalDanmakuDataSource.swift in Sources */,
+				94EAE62ED490A2DC41C41896 /* PauseAdOverlay.swift in Sources */,
+				1B32ED65276770AE4995AD63 /* PlaybackSpeedManager.swift in Sources */,
+				A2FE8E2620151BABEA0E44C6 /* PlaybackSpeedSettingsView.swift in Sources */,
+				B4CBC803471FD56F7B944206 /* PlayerControlView.swift in Sources */,
+				E4EBA1DE365A16E55ED3158D /* PlayerControlViewModel.swift in Sources */,
+				D591CBF769CF678587AD277A /* PlayerProgressSlider.swift in Sources */,
+				2D9B1F2F0680787FAC2973BC /* PlayerSettingsMenuView.swift in Sources */,
+				47AB9AE7D7F00C30A10453BB /* PrerollAdOverlay.swift in Sources */,
+				D91DB90DDDAC3E95F1D725BF /* ProxyServer.swift in Sources */,
+				9751053382C0AD7A7738ED08 /* SubtitleManager.swift in Sources */,
+				FAEB23791846AE3558E6809A /* ThumbnailCache.swift in Sources */,
+				714E846E4B956E4C966C4F76 /* ThumbnailPreviewManager.swift in Sources */,
+				EE5AF35794C71140E79E4657 /* ThumbnailPreviewView.swift in Sources */,
+				FBF92811841C5A10B53BB848 /* ThumbnailSpriteParser.swift in Sources */,
+				8B23871E4F64B1BA4308D94F /* UIImage+DXPlayerSDK.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D06E37BC4154426FAAD1FBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80ADCC36B867EEE269A243F9 /* AppDelegate.swift in Sources */,
+				21F7EC63A6A21E20D39457CA /* VideoAdResponse.swift in Sources */,
+				D7A92EEF4C28B3DDC783FF28 /* ViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AF674761C31E8767710D8671 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC837E70C092C8AB4FC13E4C /* IntegrationTests.swift in Sources */,
+				539DF56AA4C93139311A2E3B /* M4SubtitleDanmakuTests.swift in Sources */,
+				1A966F7177EB9A3B02890974 /* SplitTrackTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8A0933DE707BB6B11763C126 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3D265600366082ECA15D529 /* DXPlayerSDK */;
+			targetProxy = 29CB06316C087E4412B6F7AE /* PBXContainerItemProxy */;
+		};
+		A6B48FAD4E51157C50EE06C3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D34754D461BB4741FE360E68 /* DXPlayerSDKDemoApp */;
+			targetProxy = 0227E6B27E3E774F22E592A5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5DA695CAD8C44A0D62861E02 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				742DD909A8311930D0E807ED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2163B1CBC498CAA89C02EAB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Distribution: Nazar Hussain (BQ6A4VMVJF)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = BQ6A4VMVJF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				INFOPLIST_FILE = DemoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dxplayer.www;
+				PRODUCT_NAME = DXPlayerSDKDemoApp;
+				PROVISIONING_PROFILE_SPECIFIER = ad_hoc_profile;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2F6BC25444B1CE603ACA2A81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Distribution: Nazar Hussain (BQ6A4VMVJF)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = BQ6A4VMVJF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				INFOPLIST_FILE = DemoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dxplayer.www;
+				PRODUCT_NAME = DXPlayerSDKDemoApp;
+				PROVISIONING_PROFILE_SPECIFIER = ad_hoc_profile;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		348D14F1CB0B9BF532180DEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/FSPlayer.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/Frameworks/FSPlayer.xcframework/ios-arm64_x86_64-simulator",
+					"\"Frameworks\"",
+				);
+				INFOPLIST_FILE = DXPlayerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dxplayer.DXPlayerSDK;
+				PRODUCT_NAME = DXPlayerSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		41D742C28E8A34074B443BAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dxplayer.DXPlayerSDKTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DXPlayerSDKDemoApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DXPlayerSDKDemoApp";
+			};
+			name = Release;
+		};
+		4749068CA24EC00C219F0783 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		82C1816986A16225CE83B6C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		85A0DC0199DB270162D3D2AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dxplayer.DXPlayerSDKTests;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DXPlayerSDKDemoApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DXPlayerSDKDemoApp";
+			};
+			name = Debug;
+		};
+		D01D98945EB57A2E9180D523 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/FSPlayer.xcframework/ios-arm64",
+					"$(PROJECT_DIR)/Frameworks/FSPlayer.xcframework/ios-arm64_x86_64-simulator",
+					"\"Frameworks\"",
+				);
+				INFOPLIST_FILE = DXPlayerSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.dxplayer.DXPlayerSDK;
+				PRODUCT_NAME = DXPlayerSDK;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14E83EC3CFB823D16DB6C2E9 /* Build configuration list for PBXNativeTarget "DXPlayerSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D01D98945EB57A2E9180D523 /* Debug */,
+				348D14F1CB0B9BF532180DEB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		243B7EB8DFD86A3FCC124FB9 /* Build configuration list for PBXProject "DXPlayerSDKDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82C1816986A16225CE83B6C4 /* Debug */,
+				4749068CA24EC00C219F0783 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		A57FCA507170BCA1CCCD1A05 /* Build configuration list for PBXNativeTarget "DXPlayerSDKTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85A0DC0199DB270162D3D2AD /* Debug */,
+				41D742C28E8A34074B443BAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B5260B1BB6655CBB76CA81E2 /* Build configuration list for PBXNativeTarget "DXPlayerSDKDemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2163B1CBC498CAA89C02EAB6 /* Debug */,
+				2F6BC25444B1CE603ACA2A81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7DE6FD7BF332BB223CACF829 /* Project object */;
+}

@@ -60,3 +60,9 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots/**/*.png
 fastlane/test_output
+
+iOSInjectionProject/
+
+# macOS
+.DS_Store
+DemoApp/TestResources/TearsOfSteel_5min_1k.mp4
