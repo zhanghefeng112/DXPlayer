@@ -892,9 +892,94 @@ class ViewController: UIViewController {
             print("🚀 [弹幕测试] 开始批量发送 10 条测试弹幕")
         })
 
+        // --- API 联调 ---
+        alert.addAction(UIAlertAction(title: "🔗 HTTP 轮询模式（联调）", style: .default) { [weak self] _ in
+            self?.switchToDanmakuHTTPMode()
+        })
+
+        if #available(iOS 13.0, *) {
+            alert.addAction(UIAlertAction(title: "📡 点播 WS 模式（联调）", style: .default) { [weak self] _ in
+                self?.switchToDanmakuWSVideoMode()
+            })
+
+            alert.addAction(UIAlertAction(title: "🏠 直播 WS 模式（联调）", style: .default) { [weak self] _ in
+                self?.switchToDanmakuWSLiveMode()
+            })
+        }
+
+        alert.addAction(UIAlertAction(title: "⬅️ 切回本地测试模式", style: .default) { [weak self] _ in
+            self?.switchToLocalDanmakuMode()
+        })
+
         alert.addAction(UIAlertAction(title: "取消", style: .cancel))
 
         present(alert, animated: true)
+    }
+
+    // MARK: - 弹幕数据源切换
+
+    private func switchToDanmakuHTTPMode() {
+        let baseURL = "http://47.236.181.171:80"
+        let dataSource = APIDanmakuDataSource(baseURL: baseURL)
+        let context: [String: Any] = [
+            "video_id": 2001,
+            "oauth_id": "test_user",
+            "getCurrentPosition": { [weak self] in
+                self?.playerContainer.getPosition() ?? 0
+            }
+        ]
+        dataSource.start(context: context)
+        playerContainer.setDanmakuDataSource(dataSource)
+        print("✅ [弹幕联调] 已切换到 HTTP 轮询模式 (video_id=2001)")
+
+        let alert = UIAlertController(title: "已切换", message: "HTTP 轮询模式\nAPI: \(baseURL)\nvideo_id: 2001", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+
+    @available(iOS 13.0, *)
+    private func switchToDanmakuWSVideoMode() {
+        let baseURL = "http://47.236.181.171"
+        let dataSource = WSVideoDanmakuDataSource(baseURL: baseURL)
+        let context: [String: Any] = [
+            "video_id": 2001,
+            "oauth_id": "test_user_ios",
+            "getCurrentPosition": { [weak self] in
+                self?.playerContainer.getPosition() ?? 0
+            }
+        ]
+        dataSource.start(context: context)
+        playerContainer.setDanmakuDataSource(dataSource)
+        print("✅ [弹幕联调] 已切换到点播 WS 模式 (video_id=2001)")
+
+        let alert = UIAlertController(title: "已切换", message: "点播 WS 模式\nWS: ws://47.236.181.171\nvideo_id: 2001", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+
+    @available(iOS 13.0, *)
+    private func switchToDanmakuWSLiveMode() {
+        let baseURL = "http://47.236.181.171"
+        let dataSource = WSLiveDanmakuDataSource(baseURL: baseURL)
+        let context: [String: Any] = [
+            "room_id": 1001,
+            "oauth_id": "test_user_ios"
+        ]
+        dataSource.start(context: context)
+        playerContainer.setDanmakuDataSource(dataSource)
+        print("✅ [弹幕联调] 已切换到直播 WS 模式 (room_id=1001)")
+        // ws://47.236.181.171/ws/video/2001?oauth_id=test_user
+
+        let alert = UIAlertController(title: "已切换", message: "直播 WS 模式\nWS: ws://47.236.181.171\nroom_id: 1001", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
+
+    private func switchToLocalDanmakuMode() {
+        let dataSource = LocalDanmakuDataSource()
+        dataSource.start(context: [:])
+        playerContainer.setDanmakuDataSource(dataSource)
+        print("✅ [弹幕] 已切换回本地测试模式")
     }
 
     @objc private func testThumbnail() {

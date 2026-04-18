@@ -115,7 +115,7 @@ public class DanmakuManager {
     // MARK: - 公共方法 - 彈幕控制
 
     /// 發送彈幕
-    public func sendDanmaku(text: String, completion: ((Result<Void, Error>) -> Void)? = nil) {
+    public func sendDanmaku(text: String, mode: DanmakuMode = .scroll, color: String? = nil, completion: ((Result<Void, Error>) -> Void)? = nil) {
         // 驗證輸入
         guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             let error = NSError(domain: "DanmakuManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "彈幕內容不能為空"])
@@ -140,12 +140,13 @@ public class DanmakuManager {
 
         DXPlayerLogger.info("📤 [彈幕] 發送彈幕: \(text)")
 
-        // 本地立即顯示
-        let localDanmaku = DanmakuItem(text: text, isSelf: true)
+        // 本地立即顯示（使用传入的 mode 和 color）
+        let localColor = color.flatMap { UIColor.danmaku_fromHex($0) } ?? .white
+        let localDanmaku = DanmakuItem(text: text, color: localColor, mode: mode, isSelf: true)
         enqueueDanmaku(localDanmaku)
 
         // 發送至資料來源
-        dataSource?.send(text: text, completion: { result in
+        dataSource?.send(text: text, mode: mode, color: color, completion: { result in
             completion?(result)
         })
     }
@@ -197,6 +198,12 @@ public class DanmakuManager {
     public var isEnabled: Bool {
         return currentSettings.isEnabled
     }
+
+    /// 當前發送模式
+    public var currentSendMode: DanmakuMode { currentSettings.sendMode }
+
+    /// 當前發送顏色 HEX（nil = 服務端默認）
+    public var currentSendColor: String? { currentSettings.sendColor }
 
     // MARK: - 私有方法 - 記憶體管理
 

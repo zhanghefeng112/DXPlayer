@@ -78,6 +78,8 @@ public class DanmakuSettingsView: UIView {
     private var linesSlider: DanmakuSettingSliderView!
     private var fontSizeSlider: DanmakuSettingSliderView!
     private var speedSlider: DanmakuSettingSliderView!
+    private var sendModeRow: DanmakuSendModePickerView!
+    private var colorPickerRow: DanmakuColorSwatchPickerView!
 
     // MARK: - 回調
 
@@ -141,6 +143,8 @@ public class DanmakuSettingsView: UIView {
         slidersScrollView.addSubview(linesSlider)
         slidersScrollView.addSubview(fontSizeSlider)
         slidersScrollView.addSubview(speedSlider)
+        slidersScrollView.addSubview(sendModeRow)
+        slidersScrollView.addSubview(colorPickerRow)
     }
 
     private func setupSliders() {
@@ -203,6 +207,20 @@ public class DanmakuSettingsView: UIView {
                 self?.notifySettingsChanged()
             }
         }
+
+        sendModeRow = DanmakuSendModePickerView()
+        sendModeRow.setMode(currentSettings.sendMode)
+        sendModeRow.onModeSelected = { [weak self] mode in
+            self?.currentSettings.sendMode = mode
+            self?.notifySettingsChanged()
+        }
+
+        colorPickerRow = DanmakuColorSwatchPickerView()
+        colorPickerRow.setColor(currentSettings.sendColor)
+        colorPickerRow.onColorSelected = { [weak self] color in
+            self?.currentSettings.sendColor = color
+            self?.notifySettingsChanged()
+        }
     }
 
     public override func layoutSubviews() {
@@ -260,7 +278,13 @@ public class DanmakuSettingsView: UIView {
         sliderY += sliderHeight + 8
 
         speedSlider.frame = CGRect(x: sliderX, y: sliderY, width: sliderWidth, height: sliderHeight)
-        sliderY += sliderHeight
+        sliderY += sliderHeight + 16
+
+        sendModeRow.frame = CGRect(x: sliderX, y: sliderY, width: sliderWidth, height: 72)
+        sliderY += 72 + 16
+
+        colorPickerRow.frame = CGRect(x: sliderX, y: sliderY, width: sliderWidth, height: 72)
+        sliderY += 72
 
         // 設置滾動內容大小
         slidersScrollView.contentSize = CGSize(width: sliderWidth, height: sliderY + 16)
@@ -276,6 +300,8 @@ public class DanmakuSettingsView: UIView {
         linesSlider.setValue(Float(settings.displayLines))
         fontSizeSlider.setValue(Float(settings.fontSize.rawValue))
         speedSlider.setValue(Float(settings.speed.rawValue))
+        sendModeRow.setMode(settings.sendMode)
+        colorPickerRow.setColor(settings.sendColor)
     }
 
     /// 顯示面板（從右側滑入）
@@ -329,7 +355,7 @@ public class DanmakuSettingsView: UIView {
     }
 
     @objc private func resetButtonTapped() {
-        // 重置為默認設定
+        // 重置為默認設定（sendMode/sendColor 也一併重置）
         loadSettings(.default)
         notifySettingsChanged()
     }
@@ -438,5 +464,263 @@ class DanmakuSettingSliderView: UIView {
         // 更新顯示使用四捨五入後的值
         valueLabel.text = valueFormatter?(roundedValue) ?? "\(roundedValue)"
         onValueChanged?(roundedValue)
+    }
+}
+
+// MARK: - DanmakuSendModePickerView
+
+/// 發送模式選擇器（4 個按鈕橫排）
+class DanmakuSendModePickerView: UIView {
+
+    // MARK: - 數據
+
+    private let modes: [(DanmakuMode, String)] = [
+        (.scroll,  "滾動"),
+        (.top,     "頂部"),
+        (.bottom,  "底部"),
+        (.reverse, "反向")
+    ]
+
+    private var selectedMode: DanmakuMode = .scroll
+    var onModeSelected: ((DanmakuMode) -> Void)?
+
+    // MARK: - UI
+
+    private let titleLabel: UILabel = {
+        let l = UILabel()
+        l.text = "發送模式"
+        l.textColor = .white
+        l.font = .systemFont(ofSize: 16, weight: .medium)
+        return l
+    }()
+
+    private let buttonStack: UIStackView = {
+        let s = UIStackView()
+        s.axis = .horizontal
+        s.spacing = 6
+        s.alignment = .fill
+        s.distribution = .fillEqually
+        return s
+    }()
+
+    private var modeButtons: [UIButton] = []
+
+    // MARK: - Init
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+
+    private func setup() {
+        addSubview(titleLabel)
+        addSubview(buttonStack)
+
+        for (index, (_, label)) in modes.enumerated() {
+            let btn = UIButton(type: .custom)
+            btn.setTitle(label, for: .normal)
+            btn.titleLabel?.font = .systemFont(ofSize: 13, weight: .medium)
+            btn.layer.cornerRadius = 6
+            btn.tag = index
+            btn.addTarget(self, action: #selector(modeTapped(_:)), for: .touchUpInside)
+            buttonStack.addArrangedSubview(btn)
+            modeButtons.append(btn)
+        }
+        updateButtonStyles()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let w = bounds.width
+        titleLabel.frame = CGRect(x: 0, y: 0, width: w, height: 20)
+        buttonStack.frame = CGRect(x: 0, y: 28, width: w, height: 36)
+    }
+
+    // MARK: - 公共方法
+
+    func setMode(_ mode: DanmakuMode) {
+        selectedMode = mode
+        updateButtonStyles()
+    }
+
+    // MARK: - 私有
+
+    private func updateButtonStyles() {
+        for (index, (mode, _)) in modes.enumerated() {
+            let btn = modeButtons[index]
+            let isSelected = mode == selectedMode
+            btn.backgroundColor = isSelected
+                ? UIColor.systemBlue
+                : UIColor.white.withAlphaComponent(0.15)
+            btn.setTitleColor(isSelected ? .white : UIColor.white.withAlphaComponent(0.8), for: .normal)
+            btn.layer.borderWidth = isSelected ? 0 : 0.5
+            btn.layer.borderColor = UIColor.white.withAlphaComponent(0.3).cgColor
+        }
+    }
+
+    @objc private func modeTapped(_ sender: UIButton) {
+        let (mode, _) = modes[sender.tag]
+        selectedMode = mode
+        updateButtonStyles()
+        onModeSelected?(mode)
+    }
+}
+
+// MARK: - DanmakuColorSwatchPickerView
+
+/// 發送顏色色塊選擇器（橫排色塊）
+class DanmakuColorSwatchPickerView: UIView {
+
+    // MARK: - 數據
+
+    /// nil = 服務端默認（顯示為白色+虛線邊框）
+    private let presets: [(String?, UIColor)] = [
+        (nil,        UIColor(white: 1, alpha: 0.9)),  // 默認
+        ("#4FC3F7",  UIColor(red: 0.31, green: 0.76, blue: 0.97, alpha: 1)),  // 藍
+        ("#66BB6A",  UIColor(red: 0.40, green: 0.73, blue: 0.41, alpha: 1)),  // 綠
+        ("#AB47BC",  UIColor(red: 0.67, green: 0.28, blue: 0.74, alpha: 1)),  // 紫
+        ("#EC407A",  UIColor(red: 0.93, green: 0.25, blue: 0.48, alpha: 1)),  // 粉
+        ("#F9C74F",  UIColor(red: 0.98, green: 0.78, blue: 0.31, alpha: 1)),  // 黃
+    ]
+
+    private var selectedHex: String? = nil
+    var onColorSelected: ((String?) -> Void)?
+
+    // MARK: - UI
+
+    private let titleLabel: UILabel = {
+        let l = UILabel()
+        l.text = "发送弹幕颜色"
+        l.textColor = .white
+        l.font = .systemFont(ofSize: 16, weight: .medium)
+        return l
+    }()
+
+    private let defaultLabel: UILabel = {
+        let l = UILabel()
+        l.text = "默認"
+        l.textColor = UIColor.white.withAlphaComponent(0.5)
+        l.font = .systemFont(ofSize: 10)
+        l.textAlignment = .center
+        return l
+    }()
+
+    private var swatchViews: [UIView] = []
+
+    // MARK: - Init
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+
+    private func setup() {
+        addSubview(titleLabel)
+
+        for (index, (hex, color)) in presets.enumerated() {
+            let container = UIView()
+            container.tag = index
+
+            let swatch = UIView()
+            swatch.backgroundColor = color
+            swatch.layer.cornerRadius = 14
+            swatch.layer.masksToBounds = false
+            swatch.tag = 100
+
+            container.addSubview(swatch)
+
+            // 第一個（默認）加「默」標籤
+            if hex == nil {
+                let lbl = UILabel()
+                lbl.text = "白"
+                lbl.textColor = UIColor(white: 0.3, alpha: 1)
+                lbl.font = .systemFont(ofSize: 11, weight: .bold)
+                lbl.textAlignment = .center
+                lbl.tag = 200
+                swatch.addSubview(lbl)
+            }
+
+            let tap = UITapGestureRecognizer(target: self, action: #selector(swatchTapped(_:)))
+            container.addGestureRecognizer(tap)
+            container.isUserInteractionEnabled = true
+            addSubview(container)
+            swatchViews.append(container)
+        }
+        updateSwatchStyles()
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let w = bounds.width
+        titleLabel.frame = CGRect(x: 0, y: 0, width: w, height: 20)
+
+        let swatchSize: CGFloat = 28
+        let totalSwatches = presets.count
+        let spacing = (w - CGFloat(totalSwatches) * swatchSize) / CGFloat(totalSwatches - 1)
+        let swatchY: CGFloat = 28 + (36 - swatchSize) / 2
+
+        for (i, container) in swatchViews.enumerated() {
+            let x = CGFloat(i) * (swatchSize + spacing)
+            container.frame = CGRect(x: x, y: swatchY, width: swatchSize, height: swatchSize)
+            if let swatch = container.viewWithTag(100) {
+                swatch.frame = container.bounds
+                swatch.layer.cornerRadius = swatchSize / 2
+                if let lbl = swatch.viewWithTag(200) {
+                    lbl.frame = swatch.bounds
+                }
+            }
+        }
+    }
+
+    // MARK: - 公共方法
+
+    func setColor(_ hex: String?) {
+        selectedHex = hex
+        updateSwatchStyles()
+    }
+
+    // MARK: - 私有
+
+    private func updateSwatchStyles() {
+        for (index, (hex, _)) in presets.enumerated() {
+            guard let container = swatchViews[safe: index],
+                  let swatch = container.viewWithTag(100) else { continue }
+            let isSelected = hex == selectedHex
+            swatch.layer.borderWidth = isSelected ? 3 : 1
+            swatch.layer.borderColor = isSelected
+                ? UIColor.systemBlue.cgColor
+                : UIColor.white.withAlphaComponent(0.3).cgColor
+            // 選中時縮小一點，未選中正常大小
+            swatch.transform = isSelected
+                ? CGAffineTransform(scaleX: 1.15, y: 1.15)
+                : .identity
+        }
+    }
+
+    @objc private func swatchTapped(_ gesture: UITapGestureRecognizer) {
+        guard let container = gesture.view else { return }
+        let index = container.tag
+        let (hex, _) = presets[index]
+        selectedHex = hex
+        updateSwatchStyles()
+        onColorSelected?(hex)
+    }
+}
+
+// MARK: - Array safe subscript
+
+private extension Array {
+    subscript(safe index: Int) -> Element? {
+        indices.contains(index) ? self[index] : nil
     }
 }

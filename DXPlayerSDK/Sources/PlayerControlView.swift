@@ -465,8 +465,8 @@ class PlayerControlView: UIView {
             // 播放/暂停按钮
             playPauseButton.leadingAnchor.constraint(equalTo: controlRowView.leadingAnchor, constant: 8),
             playPauseButton.centerYAnchor.constraint(equalTo: controlRowView.centerYAnchor),
-            playPauseButton.widthAnchor.constraint(equalToConstant: 32),
-            playPauseButton.heightAnchor.constraint(equalToConstant: 32),
+            playPauseButton.widthAnchor.constraint(equalToConstant: 28),
+            playPauseButton.heightAnchor.constraint(equalToConstant: 28),
 
             // 时间标签
             timeLabel.leadingAnchor.constraint(equalTo: playPauseButton.trailingAnchor, constant: 4),
@@ -617,6 +617,12 @@ class PlayerControlView: UIView {
         let fullScreenPoint = convert(point, to: fullScreenButton)
         if fullScreenButton.point(inside: fullScreenPoint, with: event) {
             return fullScreenButton
+        }
+
+        // 检查弹幕发送按钮（优先于进度条，避免触摸区域冲突）
+        let sendButtonPoint = convert(point, to: danmakuSendButton)
+        if danmakuSendButton.point(inside: sendButtonPoint, with: event) {
+            return danmakuSendButton
         }
 
         // 检查进度条

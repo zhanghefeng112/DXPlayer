@@ -20,8 +20,10 @@ public protocol DanmakuDataSource: AnyObject {
     /// 發送彈幕
     /// - Parameters:
     ///   - text: 彈幕文字
+    ///   - mode: 彈幕模式（默認 scroll）
+    ///   - color: 彈幕顏色 HEX 字符串（nil 則使用服務端用戶設置顏色）
     ///   - completion: 完成回調
-    func send(text: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func send(text: String, mode: DanmakuMode, color: String?, completion: @escaping (Result<Void, Error>) -> Void)
 
     /// 時間軸模式專用：獲取指定時間範圍的彈幕
     /// - Parameters:

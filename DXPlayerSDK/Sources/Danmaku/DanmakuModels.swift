@@ -1,6 +1,20 @@
 import Foundation
 import UIKit
 
+// MARK: - DanmakuMode
+
+/// 彈幕顯示模式（對應 API mode 欄位）
+public enum DanmakuMode: String {
+    /// 從右往左滾動（預設）
+    case scroll = "scroll"
+    /// 固定在頂部
+    case top = "top"
+    /// 固定在底部
+    case bottom = "bottom"
+    /// 從左往右滾動（反向）
+    case reverse = "reverse"
+}
+
 // MARK: - DanmakuItem
 
 /// 彈幕資料項目
@@ -23,9 +37,18 @@ public struct DanmakuItem {
     /// 字體大小（可選，使用全局設定）
     public let fontSize: CGFloat?
 
+    /// 彈幕顯示模式（對應 API mode 欄位，預設 scroll）
+    public let mode: DanmakuMode
+
+    /// 發送者頭銜（GM / UP主 / VIP1-10 / 空字串）
+    public let title: String?
+
     /// 時間戳（僅時間軸模式使用）
     /// 表示該彈幕應該在影片的哪個時間點顯示（秒）
     public let timestamp: TimeInterval?
+
+    /// 服務端發送時間（毫秒 Unix 時間戳，對應 API send_time 欄位）
+    public let sendTime: Int64?
 
     /// 接收時間（即時模式使用）
     public let receivedAt: Date
@@ -41,7 +64,10 @@ public struct DanmakuItem {
         userName: String? = nil,
         color: UIColor = .white,
         fontSize: CGFloat? = nil,
+        mode: DanmakuMode = .scroll,
+        title: String? = nil,
         timestamp: TimeInterval? = nil,
+        sendTime: Int64? = nil,
         receivedAt: Date = Date(),
         isSelf: Bool = false
     ) {
@@ -51,7 +77,10 @@ public struct DanmakuItem {
         self.userName = userName
         self.color = color
         self.fontSize = fontSize
+        self.mode = mode
+        self.title = title
         self.timestamp = timestamp
+        self.sendTime = sendTime
         self.receivedAt = receivedAt
         self.isSelf = isSelf
     }
@@ -76,6 +105,12 @@ public struct DanmakuSettings {
     /// 是否啟用彈幕
     public var isEnabled: Bool
 
+    /// 發送模式（默認滾動）
+    public var sendMode: DanmakuMode
+
+    /// 發送顏色 HEX 字符串（nil = 服務端使用用戶默認設置）
+    public var sendColor: String?
+
     /// 預設值
     public static var `default`: DanmakuSettings {
         return DanmakuSettings(
@@ -83,7 +118,9 @@ public struct DanmakuSettings {
             displayLines: 3,
             fontSize: .standard,
             speed: .normal,
-            isEnabled: true
+            isEnabled: true,
+            sendMode: .scroll,
+            sendColor: nil
         )
     }
 
@@ -93,13 +130,17 @@ public struct DanmakuSettings {
         displayLines: Int = 3,
         fontSize: DanmakuFontSize = .standard,
         speed: DanmakuSpeed = .normal,
-        isEnabled: Bool = true
+        isEnabled: Bool = true,
+        sendMode: DanmakuMode = .scroll,
+        sendColor: String? = nil
     ) {
         self.opacity = max(0.0, min(1.0, opacity))
         self.displayLines = max(1, min(5, displayLines))
         self.fontSize = fontSize
         self.speed = speed
         self.isEnabled = isEnabled
+        self.sendMode = sendMode
+        self.sendColor = sendColor
     }
 }
 
@@ -164,7 +205,9 @@ extension DanmakuSettings {
             displayLines: defaults.integer(forKey: "danmaku.lines") == 0 ? 3 : defaults.integer(forKey: "danmaku.lines"),
             fontSize: DanmakuFontSize(rawValue: defaults.integer(forKey: "danmaku.fontSize")) ?? .standard,
             speed: DanmakuSpeed(rawValue: defaults.integer(forKey: "danmaku.speed")) ?? .normal,
-            isEnabled: defaults.object(forKey: "danmaku.enabled") == nil ? true : defaults.bool(forKey: "danmaku.enabled")
+            isEnabled: defaults.object(forKey: "danmaku.enabled") == nil ? true : defaults.bool(forKey: "danmaku.enabled"),
+            sendMode: DanmakuMode(rawValue: defaults.string(forKey: "danmaku.sendMode") ?? "") ?? .scroll,
+            sendColor: defaults.string(forKey: "danmaku.sendColor")
         )
     }
 
@@ -176,6 +219,12 @@ extension DanmakuSettings {
         defaults.set(fontSize.rawValue, forKey: "danmaku.fontSize")
         defaults.set(speed.rawValue, forKey: "danmaku.speed")
         defaults.set(isEnabled, forKey: "danmaku.enabled")
+        defaults.set(sendMode.rawValue, forKey: "danmaku.sendMode")
+        if let color = sendColor {
+            defaults.set(color, forKey: "danmaku.sendColor")
+        } else {
+            defaults.removeObject(forKey: "danmaku.sendColor")
+        }
     }
 }
 
@@ -204,5 +253,69 @@ struct DanmakuTrack {
 
         // 最後一條彈幕的尾部已經離開畫面右側足夠距離
         return lastViewTrailingEdge < screenWidth - requiredGap
+    }
+}
+
+// MARK: - UIColor HEX 解析（弹幕内部工具）
+
+extension UIColor {
+    /// 從 HEX 字符串解析顏色，支持 `#RRGGBB` 和 `#RRGGBBAA` 格式
+    /// - Returns: 解析失敗返回 nil
+    static func danmaku_fromHex(_ hex: String) -> UIColor? {
+        var str = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        if str.hasPrefix("#") { str = String(str.dropFirst()) }
+        guard str.count == 6 || str.count == 8 else { return nil }
+        var value: UInt64 = 0
+        guard Scanner(string: str).scanHexInt64(&value) else { return nil }
+        let r, g, b, a: CGFloat
+        if str.count == 6 {
+            r = CGFloat((value >> 16) & 0xFF) / 255
+            g = CGFloat((value >>  8) & 0xFF) / 255
+            b = CGFloat( value        & 0xFF) / 255
+            a = 1.0
+        } else {
+            r = CGFloat((value >> 24) & 0xFF) / 255
+            g = CGFloat((value >> 16) & 0xFF) / 255
+            b = CGFloat((value >>  8) & 0xFF) / 255
+            a = CGFloat( value        & 0xFF) / 255
+        }
+        return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+}
+
+// MARK: - DanmakuUserSetting
+
+/// 服务端返回的用户弹幕设置（GET /api/danmu/setting）
+public struct DanmakuUserSetting {
+    /// 用户自定义弹幕颜色 HEX，nil 表示未设置（使用服务端默认）
+    public let color: String?
+    /// VIP 等级（0=非VIP，1-10=VIP等级）
+    public let vipLevel: Int
+    /// 是否为UP主（由三方系统同步）
+    public let isUper: Bool
+    /// 屏蔽关键字列表
+    public let disturbKeywords: [String]
+    /// 接收等级过滤（0=接收全部，1-10=仅接收该等级及以上用户的弹幕）
+    public let receiveLevel: Int
+}
+
+/// 用于更新弹幕设置的请求体（POST /api/danmu/setting）
+/// 所有字段均为可选，nil 表示不修改该字段
+public struct DanmakuUserSettingUpdate {
+    /// 弹幕颜色 HEX：nil=不修改，""=清除（恢复服务端默认），"#RRGGBB"=设置新颜色
+    public var color: String?
+    /// 屏蔽关键字：nil=不修改，[]=清除所有关键字
+    public var disturbKeywords: [String]?
+    /// 接收等级：nil=不修改，0=全部，1-10=最低VIP等级
+    public var receiveLevel: Int?
+
+    public init(
+        color: String? = nil,
+        disturbKeywords: [String]? = nil,
+        receiveLevel: Int? = nil
+    ) {
+        self.color = color
+        self.disturbKeywords = disturbKeywords
+        self.receiveLevel = receiveLevel
     }
 }

@@ -41,7 +41,7 @@ public class LocalDanmakuDataSource: DanmakuDataSource {
         timer = nil
     }
 
-    public func send(text: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    public func send(text: String, mode: DanmakuMode = .scroll, color: String? = nil, completion: @escaping (Result<Void, Error>) -> Void) {
         // 模擬發送成功
         // 注意：不要在這裡調用 delegate?.dataSource(self, didReceive:)
         // 因為 DanmakuManager.sendDanmaku 已經在本地顯示了彈幕，避免重複
